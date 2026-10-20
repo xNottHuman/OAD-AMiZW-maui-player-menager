@@ -1,25 +1,31 @@
-﻿using MauiApp3.Data;
+﻿
+using MauiApp3.Data;
 using MauiApp3.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace MauiApp3.Commands
 {
     public class AddPlayerCommandHandler
     {
         private readonly PlayerRepository _playerRepository;
+
         public AddPlayerCommandHandler(PlayerRepository playerRepository)
         {
             _playerRepository = playerRepository;
         }
+
         public void Handle(AddPlayerCommand command)
         {
+            int newId = _playerRepository.Players
+                .Select(p => p.Id)
+                .DefaultIfEmpty(0)
+                .Max() + 1;
+
             Player player = new Player
             {
-                Id = _playerRepository.Players.Count + 1,
+                Id = newId,
                 Name = command.Name,
-                Level = command.Level,
+                Level = command.Level
             };
 
             _playerRepository.Players.Add(player);

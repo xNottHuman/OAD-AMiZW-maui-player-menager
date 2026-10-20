@@ -83,7 +83,47 @@
             <Label
                 Text="{Binding SearchResult}"
                 FontSize="18"/>
+
+            <Label
+                Text="USUWANIE GRACZA"
+                FontSize="24"
+                FontAttributes="Bold"
+                Margin="0,20,0,0"/>
+            <Entry
+                Placeholder="Podaj Id gracza do usunięcia"
+                Keyboard="Numeric"
+                Text="{Binding PlayerIdToDelete}"/>
+            <Button
+                Text="Usuń gracza"
+                Command="{Binding DeletePlayerCommandButton}"/>
+            <Label
+                Text="{Binding DeleteResult}"
+                FontSize="18"/>
+
+            <Label
+                Text="EDYCJA GRACZA"
+                FontSize="24"
+                FontAttributes="Bold"
+                Margin="0,20,0,0"/>
+            <Entry
+                Placeholder="Id gracza do edycji"
+                Keyboard="Numeric"
+                Text="{Binding PlayerIdToEdit}"/>
+            <Entry
+                Placeholder="Nowa nazwa"
+                Text="{Binding PlayerNameToEdit}"/>
+            <Entry
+                Placeholder="Nowy poziom"
+                Keyboard="Numeric"
+                Text="{Binding PlayerLevelToEdit}"/>
+            <Button
+                Text="Edytuj gracza"
+                Command="{Binding EditPlayerCommandButton}"/>
+            <Label
+                Text="{Binding EditResult}"
+                FontSize="18"/>
         </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>
